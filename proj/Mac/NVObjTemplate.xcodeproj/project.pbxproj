@@ -35,6 +35,7 @@
 		B03C1D50130EDBCB00661BC0 /* Static.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03C1D4F130EDBCB00661BC0 /* Static.cpp */; };
 		B0A46050125F550F003A3050 /* OmnisTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0A4604F125F550F003A3050 /* OmnisTools.cpp */; };
 		B0A46052125F5517003A3050 /* OmnisTools.he in Resources */ = {isa = PBXBuildFile; fileRef = B0A46051125F5517003A3050 /* OmnisTools.he */; };
+		B0B8CA281312858D00095C8A /* libboost_thread-xgcc42-mt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B8CA271312858D00095C8A /* libboost_thread-xgcc42-mt.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXBuildRule section */
@@ -77,6 +78,7 @@
 		B03C1D4F130EDBCB00661BC0 /* Static.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Static.cpp; path = ../../src/Static.cpp; sourceTree = SOURCE_ROOT; };
 		B0A4604F125F550F003A3050 /* OmnisTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OmnisTools.cpp; path = ../../src/OmnisTools.cpp; sourceTree = SOURCE_ROOT; };
 		B0A46051125F5517003A3050 /* OmnisTools.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OmnisTools.he; path = ../../include/OmnisTools.he; sourceTree = SOURCE_ROOT; };
+		B0B8CA271312858D00095C8A /* libboost_thread-xgcc42-mt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-xgcc42-mt.a"; path = "/Boost/boost_1_44_0/stage/lib/libboost_thread-xgcc42-mt.a"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 			files = (
 				96CA4E5A0907E8CC00C234AA /* Carbon.framework in Frameworks */,
 				96CA4E660907EB0700C234AA /* u_complib.framework in Frameworks */,
+				B0B8CA281312858D00095C8A /* libboost_thread-xgcc42-mt.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -107,6 +110,7 @@
 		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				B0B8CA271312858D00095C8A /* libboost_thread-xgcc42-mt.a */,
 				96CA4E650907EB0700C234AA /* u_complib.framework */,
 				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
 			);
@@ -257,90 +261,15 @@
 		96CA4E5E0907E8CC00C234AA /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUILD_VARIANTS = normal;
-				COPY_PHASE_STRIP = NO;
-				DEPLOYMENT_LOCATION = YES;
-				FRAMEWORK_SEARCH_PATHS = "$(OMNIS_LIB_PATH)/complib";
-				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = $OMNIS_LIB_PATH/complib/u_complib.framework/Headers/carbnuni.h;
-				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = (
-					/Developer/Headers/FlatCarbon,
-					"$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers",
-					"$(BOOST_ROOT)",
-				);
-				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
-				INSTALL_PATH = "$(OMNIS_XCOMP_PATH)";
-				LIBRARY_SEARCH_PATHS = "$(BOOST_ROOT)/stage/lib";
-				LIBRARY_STYLE = DYNAMIC;
-				OTHER_CFLAGS = (
-					"-fpermissive",
-					"-fno-for-scope",
-					"-fshort-wchar",
-					"-Dismach_o",
-					"-Dismach-o",
-				);
-				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
-				PRODUCT_NAME = NVObjTemplate;
-				RESMERGER_SOURCES_FORK = data;
-				REZ_SEARCH_PATHS = (
-					$PROJECT_DIR/../src,
-					/Developer/Headers/FlatCarbon,
-					$PROJECT_DIR,
-					$PROJECT_DIR/English.lproj,
-				);
-				WRAPPER_EXTENSION = u_xcomp;
-				ZERO_LINK = NO;
 			};
 			name = Development;
 		};
 		96CA4E5F0907E8CC00C234AA /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc,
-					i386,
-				);
-				COPY_PHASE_STRIP = YES;
-				DEPLOYMENT_LOCATION = YES;
-				DSTROOT = /;
-				FRAMEWORK_SEARCH_PATHS = "$(OMNIS_LIB_PATH)/complib";
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_PRECOMPILE_PREFIX_HEADER = NO;
-				GCC_PREFIX_HEADER = $OMNIS_LIB_PATH/complib/u_complib.framework/Headers/carbnuni.h;
-				GENERATE_PKGINFO_FILE = YES;
-				HEADER_SEARCH_PATHS = (
-					/Developer/Headers/FlatCarbon,
-					"$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers",
-					"$(BOOST_ROOT)",
-				);
-				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
-				INSTALL_PATH = "$(PROJECT_DIR)/../../deploy/Mac/$(EFFECTIVE_PLATFORM_NAME)";
-				LIBRARY_SEARCH_PATHS = "$(BOOST_ROOT)/stage/lib";
-				LIBRARY_STYLE = DYNAMIC;
-				OTHER_CFLAGS = (
-					"-fpermissive",
-					"-fno-for-scope",
-					"-fshort-wchar",
-					"-Dismach_o",
-					"-Dismach-o",
-				);
-				OTHER_CPLUSPLUSFLAGS = "$(OTHER_CFLAGS)";
-				PRODUCT_NAME = NVObjTemplate;
-				RESMERGER_SOURCES_FORK = data;
-				REZ_SEARCH_PATHS = (
-					/Developer/Headers/FlatCarbon,
-					$PROJECT_DIR,
-					$PROJECT_DIR/English.lproj,
-				);
 				SKIP_INSTALL = NO;
-				WRAPPER_EXTENSION = u_xcomp;
-				ZERO_LINK = NO;
 			};
 			name = Deployment;
 		};
@@ -348,62 +277,90 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COPY_PHASE_STRIP = NO;
-				DSTROOT = /;
-				FRAMEWORK_SEARCH_PATHS = (
-					$OMNIS_LIB_PATH/compilb,
-					$OMNIS_LIB_PATH/frameworks,
+				DSTROOT = "$(OMNIS_XCOMP_PATH)";
+				FRAMEWORK_SEARCH_PATHS = "$(OMNIS_LIB_PATH)/complib";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers/carbnuni.h";
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					$PROJECT_DIR/../../include,
+					/Developer/Headers/FlatCarbon,
+					"$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers",
+					"$(BOOST_ROOT)",
 				);
-				LIBRARY_STYLE = DYNAMIC;
+				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
+				INSTALL_PATH = /;
+				LIBRARY_SEARCH_PATHS = "$(BOOST_ROOT)/stage/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = (
+					"-Dismach_o",
+					"-Dismach-o",
+				);
+				PRODUCT_NAME = NVObjTemplate;
+				REZ_SEARCH_PATHS = (
+					$PROJECT_DIR/../../resource,
+					/Developer/Headers/FlatCarbon,
+					$PROJECT_DIR/English.lproj,
+				);
+				VALID_ARCHS = "i386 ppc";
+				WRAPPER_EXTENSION = u_xcomp;
 			};
 			name = Development;
 		};
 		96CF456008FBABD1003AA3FE /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				FRAMEWORK_SEARCH_PATHS = (
-					$OMNIS_LIB_PATH/compilb,
-					$OMNIS_LIB_PATH/frameworks,
+				ARCHS = (
+					i386,
+					ppc,
 				);
+				DSTROOT = "$(PROJECT_DIR)/../../deploy/Mac";
+				FRAMEWORK_SEARCH_PATHS = "$(OMNIS_LIB_PATH)/complib";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers/carbnuni.h";
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					$PROJECT_DIR/../../include,
+					/Developer/Headers/FlatCarbon,
+					"$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers",
+					"$(BOOST_ROOT)",
+				);
+				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
+				INSTALL_PATH = /;
+				LIBRARY_SEARCH_PATHS = "$(BOOST_ROOT)/stage/lib";
 				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = (
+					"-Dismach_o",
+					"-Dismach-o",
+				);
+				PRODUCT_NAME = NVObjTemplate;
+				REZ_SEARCH_PATHS = (
+					$PROJECT_DIR/../../resource,
+					/Developer/Headers/FlatCarbon,
+					$PROJECT_DIR/English.lproj,
+				);
+				VALID_ARCHS = "i386 ppc";
+				WRAPPER_EXTENSION = u_xcomp;
 			};
 			name = Deployment;
 		};
 		96D355F40908DD80006B6436 /* Development */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = NO;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ReleaseBuild;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
 			};
 			name = Development;
 		};
 		96D355F50908DD80006B6436 /* Deployment */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				COPY_PHASE_STRIP = YES;
-				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 0;
-				OTHER_CFLAGS = "";
-				OTHER_LDFLAGS = "";
-				OTHER_REZFLAGS = "";
-				PRODUCT_NAME = ReleaseBuild;
-				SECTORDER_FLAGS = "";
-				WARNING_CFLAGS = (
-					"-Wmost",
-					"-Wno-four-char-constants",
-					"-Wno-unknown-pragmas",
-				);
 			};
 			name = Deployment;
 		};

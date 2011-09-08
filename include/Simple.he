@@ -47,6 +47,7 @@ class NVObjSimple : public NVObjBase
 {
 private:
 	qlong				myProperty; /* Value for $myproperty */
+	qlong curCount;
 protected:
 public:		
 	// Static tracking variable
@@ -67,8 +68,16 @@ public:
 	virtual qlong canAssignProperty( OmnisTools::tThreadData* pThreadData, qlong propID );
 	
 	// Custom (Your) Methods
-	OmnisTools::tResult methodSquare( OmnisTools::tThreadData* pThreadData, qshort pParamCount );
-	OmnisTools::tResult methodEmpty( OmnisTools::tThreadData* pThreadData, qshort pParamCount );
+	OmnisTools::tResult methodStart( OmnisTools::tThreadData* pThreadData, qshort pParamCount );
+	OmnisTools::tResult methodStop( OmnisTools::tThreadData* pThreadData, qshort pParamCount );
+	OmnisTools::tResult methodCheck( OmnisTools::tThreadData* pThreadData, qshort pParamCount );
+	
+	// Internal thread methods
+	void startThread();
+	void stopThread();
+	void checkThread();
+	
+	//void doWork();
 };
 
 #endif /* SIMPLE_HE_ */

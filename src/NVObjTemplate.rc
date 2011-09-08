@@ -6,8 +6,9 @@ BEGIN
 		 1002									"Simple: Example for how to create a non-visual object in Omnis Studio"
 		 
 		 2100									"$error:$error(ErrorCode, ErrorDesc, ErrorText, MethodName) is called when an error has occurred. (Override to receive messages)"
-		 2101									"$squareNum:$squareNum(Number) returns the square of Number"
-		 2102									"$empty:$empty does nothing.  Helps determine object overhead."
+		 2101									"$start:$start starts the thread."
+		 2102									"$stop:$stop stops the thread."
+		 2103									"$check:$check checks the value in the thread."
 		 
 		 3100									"$myProperty:$myproperty returns a number"
 		 

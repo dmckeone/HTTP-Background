@@ -34,7 +34,15 @@
 #include <extcomp.he>
 #include "Simple.he"
 
+#include <boost/thread.hpp>
+#include <boost/thread/mutex.hpp>
+
+#include <iostream>
+
 using namespace OmnisTools;
+
+// Mutexes
+boost::mutex read_mutex;
 
 /**************************************************************************************************
  **                       CONSTRUCTORS / DESTRUCTORS                                             **
@@ -58,9 +66,10 @@ const static qshort cPropertyMyProperty = 3100;
  **************************************************************************************************/
 
 // This is where the resource # of the methods is defined.  In this project is also used as the Unique ID.
-const static qshort cMethodError     = 2100,
-                    cMethodSquareNum = 2101,
-					cMethodEmpty     = 2102;
+const static qshort cMethodError    = 2100,
+                    cMethodStart    = 2101,
+					cMethodStop     = 2102,
+					cMethodCheck    = 2103;
 
 /**************************************************************************************************
  **                                 INSTANCE METHODS                                             **
@@ -78,13 +87,17 @@ qlong NVObjSimple::methodCall( tThreadData* pThreadData )
 		case cMethodError:
 			result = METHOD_OK; // Always return ok to prevent circular call to error.
 			break;
-		case cMethodSquareNum:
-			pThreadData->mCurMethodName = "$squareNum";
-			result = methodSquare(pThreadData, paramCount);
+		case cMethodStart:
+			pThreadData->mCurMethodName = "$start";
+			result = methodStart(pThreadData, paramCount);
 			break;
-		case cMethodEmpty:
-			pThreadData->mCurMethodName = "$empty";
-			result = methodEmpty(pThreadData, paramCount);
+		case cMethodStop:
+			pThreadData->mCurMethodName = "$stop";
+			result = methodStop(pThreadData, paramCount);
+			break;
+		case cMethodCheck:
+			pThreadData->mCurMethodName = "$check";
+			result = methodCheck(pThreadData, paramCount);
 			break;
 	}
 	
@@ -177,9 +190,10 @@ ECOparam cSimpleMethodsParamsTable[] =
 // 7) Enum Stop (Not sure what this does, 0 = disabled)
 ECOmethodEvent cSimpleMethodsTable[] = 
 {
-	cMethodError,     cMethodError,     fftNumber, 4, &cSimpleMethodsParamsTable[0], 0, 0,
-	cMethodSquareNum, cMethodSquareNum, fftNumber, 1, &cSimpleMethodsParamsTable[3], 0, 0,
-	cMethodEmpty    , cMethodEmpty    , fftNone  , 0, 0                            , 0, 0
+	cMethodError,     cMethodError, fftNumber, 4, &cSimpleMethodsParamsTable[0], 0, 0,
+	cMethodStart,     cMethodStart, fftNumber, 1, &cSimpleMethodsParamsTable[3], 0, 0,
+	cMethodStop,      cMethodStop,  fftNone  , 0, 0                            , 0, 0,
+	cMethodCheck,     cMethodCheck, fftNone  , 0, 0                            , 0, 0
 };
 
 // List of methods in Simple
@@ -218,33 +232,56 @@ qlong NVObjSimple::returnProperties( tThreadData* pThreadData )
  **                              CUSTOM (YOUR) METHODS                                           **
  **************************************************************************************************/
 
-// Simple method that squares the result $method(5.0) = 25.0
-tResult NVObjSimple::methodSquare( tThreadData* pThreadData, qshort pParamCount )
+// Start the thread
+tResult NVObjSimple::methodStart( tThreadData* pThreadData, qshort pParamCount )
 {
-	EXTfldval fvalNumber, fvalReturn;
-	if( pParamCount != 1)
-		return ERR_BAD_PARAMS;
-
-	getParamVar(pThreadData, pParamCount, fvalNumber);
+	stopThread();
 	
-	// Extract qreal from field value
-	qreal num, result; qshort dp = dpFloat;
-	fvalNumber.getNum( num, dp );
-	
-	// Perform calculation
-	result = num * num;
-	
-	// Setup return field value 
-	fvalReturn.setNum( result, dp );
-
-	// Add a parameter; This actually sets up the return value
-	ECOaddParam(pThreadData->mEci, &fvalReturn);
+	startThread();
 	
 	return METHOD_DONE_RETURN;
 }
 
-// Empty method.  Determines call over head for a method
-tResult NVObjSimple::methodEmpty( tThreadData* pThreadData, qshort pParamCount )
+// Stop the thread
+tResult NVObjSimple::methodStop( tThreadData* pThreadData, qshort pParamCount )
 { 
+	stopThread();
+	
 	return METHOD_DONE_RETURN;
 }
+
+// Check the value of the thread
+tResult NVObjSimple::methodCheck( tThreadData* pThreadData, qshort pParamCount )
+{ 
+	boost::mutex::scoped_lock lock(read_mutex);
+	
+	// Build return value
+	EXTfldval valReturn;
+	valReturn.setLong(curCount);
+	
+	// Return it to Omnis
+	ECOaddParam(pThreadData->mEci, &valReturn);
+	
+	return METHOD_DONE_RETURN;
+}
+
+// Thread
+
+void doWork(qlong* curCount);
+
+void NVObjSimple::startThread() {
+	boost::thread thrd1(boost::bind(&doWork, &curCount));
+}
+
+void NVObjSimple::stopThread() {
+}
+
+void doWork(qlong* curCount) {
+	for (*curCount = 0; *curCount < 1000000; ++(*curCount))
+	{
+		{
+			boost::mutex::scoped_lock lock(read_mutex);
+			std::cout << "Count: "<< *curCount << std::endl;
+		}
+	}
+};
