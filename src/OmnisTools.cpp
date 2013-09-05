@@ -543,7 +543,7 @@ void OmnisTools::getEXTFldValFromConstant(EXTfldval& fVal, qlong constID, qlong 
 
 // Get an integer for an EXTfldval where the EXTfldval contains a constant
 #ifdef USE_BOOST
-static std::map<std::wstring,int> constCache;
+static std::map<std::string,int> constCache;
 int OmnisTools::getIntFromEXTFldVal(EXTfldval& fVal, qlong firstID, qlong lastID) {
 	
 	if (getType(fVal).valType == fftInteger) {
@@ -554,10 +554,10 @@ int OmnisTools::getIntFromEXTFldVal(EXTfldval& fVal, qlong firstID, qlong lastID
 	
 	int retNum = -1;
 	// Get string that needs to be matched
-	std::wstring matchString = getWStringFromEXTFldVal(fVal);
+	std::string matchString = getStringFromEXTFldVal(fVal);
 	
 	// Get map iterator for searching
-	std::map<std::wstring,int>::iterator it;
+	std::map<std::string,int>::iterator it;
 	it = constCache.find(matchString);
 	if (it != constCache.end()) {
 		retNum = it->second;
@@ -566,23 +566,23 @@ int OmnisTools::getIntFromEXTFldVal(EXTfldval& fVal, qlong firstID, qlong lastID
 		int tildePos, colonPos, numPos, constNum;
 		EXTfldval convVar;
 		str255 resourceValue;
-		std::wstring resourceMatch, resourceString;
-		std::wstring numString = L"";
+		std::string resourceMatch, resourceString;
+		std::string numString = "";
 		
 		for( int i = firstID; i <= lastID; ++i) {
 			// Load resource and put into std::wstring for easy substr
 			RESloadString(gInstLib,i,resourceValue);
 			convVar.setChar(resourceValue, dpDefault);
-			resourceString = getWStringFromEXTFldVal(convVar);
-			tildePos = resourceString.find(L"~") + 1;
-			colonPos = resourceString.find(L":");
+			resourceString = getStringFromEXTFldVal(convVar);
+			tildePos = resourceString.find("~") + 1;
+			colonPos = resourceString.find(":");
 			if (colonPos != -1) { // All constants should have colons.  If it doesn't then don't interpret the line
 				resourceMatch = resourceString.substr(tildePos, colonPos-tildePos);
 				
 				// While looping add items to the const cache
 				numPos = colonPos + 1;
 				numString.clear();
-				while (resourceString[numPos] != L':' && numPos < static_cast<int>(resourceString.length())) {
+				while (resourceString[numPos] != ':' && numPos < static_cast<int>(resourceString.length())) {
 					numString += resourceString[numPos++];
 				}
 				try {

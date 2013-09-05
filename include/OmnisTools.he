@@ -40,10 +40,10 @@
 #include <extcomp.he>
 #include <chrbasic.he>
 
-
+// Boost includes
 #define USE_BOOST
 #ifdef USE_BOOST
-#include <boost/shared_ptr.hpp>
+    #include <boost/shared_ptr.hpp>
 #endif
 
 // C Library includes
@@ -57,7 +57,7 @@
 #define OMNIS_TOOLS_HE_
 
 namespace OmnisTools {
-	
+    
 	// Generic result type for returning error status
 	typedef qlong tResult;
 	

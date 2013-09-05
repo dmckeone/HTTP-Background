@@ -1,0 +1,17 @@
+//
+//  Constants.he
+//  TMWorkQueue
+//
+//  Created by David McKeone on 11-11-21.
+//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//
+
+#ifndef CONSTANTS_HE_
+#define CONSTANTS_HE_
+
+#include <extcomp.he>
+
+
+
+
+#endif // CONSTANTS_HE_

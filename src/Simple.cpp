@@ -33,9 +33,14 @@
 
 #include <extcomp.he>
 #include "Simple.he"
+#include "ThreadTimer.he"
+#include "libpq-fe.h"
 
 #include <boost/thread.hpp>
 #include <boost/thread/mutex.hpp>
+#include <boost/format.hpp>
+
+using boost::format;
 
 #include <iostream>
 
@@ -43,6 +48,7 @@ using namespace OmnisTools;
 
 // Mutexes
 boost::mutex read_mutex;
+boost::mutex work_mutex;
 
 /**************************************************************************************************
  **                       CONSTRUCTORS / DESTRUCTORS                                             **
@@ -52,24 +58,26 @@ NVObjSimple::NVObjSimple(qobjinst objinst, tThreadData *pThreadData) : NVObjBase
 { }
 
 NVObjSimple::~NVObjSimple()
-{ }
+{ 
+    stopThread();
+}
 
 /**************************************************************************************************
  **                              PROPERTY DECLERATION                                            **
  **************************************************************************************************/
 
 // This is where the resource # of the methods is defined.  In this project it is also used as the Unique ID.
-const static qshort cPropertyMyProperty = 3100;
+const static qshort cPropertyMyProperty = 2500;
 
 /**************************************************************************************************
  **                               METHOD DECLERATION                                             **
  **************************************************************************************************/
 
 // This is where the resource # of the methods is defined.  In this project is also used as the Unique ID.
-const static qshort cMethodError    = 2100,
-                    cMethodStart    = 2101,
-					cMethodStop     = 2102,
-					cMethodCheck    = 2103;
+const static qshort cMethodError    = 2000,
+                    cMethodStart    = 2001,
+					cMethodStop     = 2002,
+					cMethodCheck    = 2003;
 
 /**************************************************************************************************
  **                                 INSTANCE METHODS                                             **
@@ -172,11 +180,11 @@ qlong NVObjSimple::setProperty( tThreadData* pThreadData )
 // 4) Extended flags.  Documentation states, "Must be 0"
 ECOparam cSimpleMethodsParamsTable[] = 
 {
-	4000, fftInteger  , 0, 0,
-	4001, fftCharacter, 0, 0,
-	4002, fftCharacter, 0, 0,
-	4003, fftCharacter, 0, 0,
-	4004, fftNumber,    0, 0
+	2900, fftInteger  , 0, 0,
+	2901, fftCharacter, 0, 0,
+	2902, fftCharacter, 0, 0,
+	2903, fftCharacter, 0, 0,
+	2904, fftNumber,    0, 0
 };
 
 // Table of Methods available for Simple
@@ -229,14 +237,80 @@ qlong NVObjSimple::returnProperties( tThreadData* pThreadData )
 }
 
 /**************************************************************************************************
+ **                       THREAD TIMER NOTIFIER                                                  **
+ **************************************************************************************************/
+
+int NVObjSimple::notify() 
+{    
+    bool callOmnisMethod = false;
+    
+    {
+        boost::mutex::scoped_lock lock(work_mutex);
+        
+        if(_threadRunning && _workStopped) {
+            _threadRunning = false;
+            callOmnisMethod = true;            
+        }
+    }
+    
+    EXTfldval retList;
+    if(callOmnisMethod) {
+        //EXTqlist* theList = new EXTqlist(_work.result());
+        retList.setList(_work.result(), qtrue);
+        //_work.setResult(0);
+        //theList = 0;
+        
+        str31 methodName(initStr31("$done"));
+        ECOdoMethod( this->getInstance(), &methodName, &retList, 1 );
+        
+        return ThreadTimer::kTimerStop;
+    }
+    
+    return ThreadTimer::kTimerContinue;
+}
+
+/**************************************************************************************************
  **                              CUSTOM (YOUR) METHODS                                           **
  **************************************************************************************************/
 
 // Start the thread
 tResult NVObjSimple::methodStart( tThreadData* pThreadData, qshort pParamCount )
 {
-	stopThread();
+    // Stop any previous thread
+    stopThread();
+    
+    EXTfldval dbVal;
+    if(getParamVar(pThreadData, 1, dbVal) == qfalse) {
+        pThreadData->mExtraErrorText = "1st parameter must be the name of the database to connect to";
+        return ERR_METHOD_FAILED;
+    }
+    std::string dbName = getStringFromEXTFldVal(dbVal);
+    
+    EXTfldval usernameVal;
+    if(getParamVar(pThreadData, 2, usernameVal) == qfalse) {
+        pThreadData->mExtraErrorText = "2nd parameter must be the username to use";
+        return ERR_METHOD_FAILED;
+    }
+    std::string username = getStringFromEXTFldVal(usernameVal);
+    
+    EXTfldval passwordVal;
+    if(getParamVar(pThreadData, 3, passwordVal) == qfalse) {
+        pThreadData->mExtraErrorText = "3rd parameter must be the password to use";
+        return ERR_METHOD_FAILED;
+    }
+    std::string password = getStringFromEXTFldVal(passwordVal);    
+    
+    EXTfldval queryVal;
+    if(getParamVar(pThreadData, 4, queryVal) == qfalse) {
+        pThreadData->mExtraErrorText = "4th parameter must be the SQL to execute";
+        return ERR_METHOD_FAILED;
+    }
+    _query = getStringFromEXTFldVal(queryVal);
+    
+    // Build connection info string
+    _connInfo = str(format("dbname=%s\nuser=%s\npassword=%s") % dbName % username % password);
 	
+    // Start thread
 	startThread();
 	
 	return METHOD_DONE_RETURN;
@@ -265,23 +339,87 @@ tResult NVObjSimple::methodCheck( tThreadData* pThreadData, qshort pParamCount )
 	return METHOD_DONE_RETURN;
 }
 
-// Thread
+EXTqlist* doWork(NVObjSimple* theObj, qlong* curCount, std::string connInfo, std::string query, EXTqlist* list) 
+{       
+    PGconn* connection = PQconnectdb(connInfo.c_str());
+    
+    if( PQstatus(connection) == CONNECTION_OK ) {        
+        PGresult* result = PQexec(connection, query.c_str());
+        int status = PQresultStatus(result);
+        if( (status == PGRES_TUPLES_OK || status == PGRES_COMMAND_OK) ) {
+            // Fill list
+            std::string value;
+            int totalRows = PQntuples(result);
+            int totalCols = PQnfields(result);
+            
+            // Add a column for each column in the result set
+            str255 colName;
+            for (int col = 0; col < totalCols; ++col) {
+                colName = initStr255(PQfname(result, col));
+                list->addCol(fftCharacter, dpFcharacter, 10000000, &colName);
+            }
+            
+            // Fill the list
+            EXTfldval colVal;
+            for (int row = 0; row < totalRows; ++row) {
+                list->insertRow();
+                for (int col = 0; col < totalCols; ++col) {
+                    value = PQgetvalue(result,row, col);
+                    list->getColValRef(row+1,col+1,colVal,qtrue);
+                    getEXTFldValFromString(colVal,value);
+                }
+            }
+        }
+         
+        // Cleanup result
+        PQclear(result);
+    }
+    
+    // Cleanup connection
+    PQfinish(connection);
+    
+    // Interruption syntax
+    try {
+        boost::this_thread::interruption_point();
+    } catch (boost::thread_interrupted) {
+        std::cout << "Interrupted" << std::endl;
+    }
+    
+    // Mark work as done
+    {
+        boost::mutex::scoped_lock lock(work_mutex);
+        
+        theObj->_workStopped = true;
+    }
+    
+    return list;
+};
 
-void doWork(qlong* curCount);
-
-void NVObjSimple::startThread() {
-	boost::thread thrd1(boost::bind(&doWork, &curCount));
+void NVObjSimple::startThread() 
+{
+    _threadRunning = true;
+    _workStopped = false;
+    
+    ThreadTimer& timerInst = ThreadTimer::instance();
+    timerInst.subscribe(this);
+    
+    // Functor Call
+    EXTqlist* mylist = new EXTqlist(listVlen);  // NOTE: Lists MUST be allocated on main Omnis thread, but can be populated in other threads
+    _work = WorkObj(this, &curCount, _connInfo, _query, mylist);
+    currentThread = boost::thread(_work);
+    
+    // Static method Call
+    //currentThread = boost::thread(boost::bind(&doWork, this, &curCount));
+    
+    // Interrupting a thread
+    //currentThread.interrupt();   
 }
 
 void NVObjSimple::stopThread() {
+    ThreadTimer& timerInst = ThreadTimer::instance();
+    timerInst.unsubscribe(this);
+    
+    if(_threadRunning) {
+        currentThread.detach();
+    }
 }
-
-void doWork(qlong* curCount) {
-	for (*curCount = 0; *curCount < 1000000; ++(*curCount))
-	{
-		{
-			boost::mutex::scoped_lock lock(read_mutex);
-			std::cout << "Count: "<< *curCount << std::endl;
-		}
-	}
-};

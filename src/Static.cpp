@@ -33,12 +33,18 @@
 
 #include <extcomp.he>
 #include "OmnisTools.he"
+#include "Logging.he"
 #include "Static.he"
 
 using namespace OmnisTools;
 
 // Define static methods
-const static qshort cStaticMethodStaticEmpty = 5000;
+const static qshort cStaticMethodLogTrace   = 20000,
+                    cStaticMethodLogDebug   = 20001,
+                    cStaticMethodLogInfo    = 20002,
+                    cStaticMethodLogWarning = 20003,
+                    cStaticMethodLogError   = 20004,
+                    cStaticMethodLogFatal   = 20005;
 
 // Parameters for Static Methods
 // Columns are:
@@ -48,7 +54,18 @@ const static qshort cStaticMethodStaticEmpty = 5000;
 // 4) Extended flags.  Documentation states, "Must be 0"
 ECOparam cStaticMethodsParamsTable[] = 
 {
-	5900, fftInteger  , 0, 0
+	// $logTrace
+    5900, fftCharacter, 0, 0,
+    // $logDebug
+    5901, fftCharacter, 0, 0,
+    // $logInfo
+    5902, fftCharacter, 0, 0,
+    // $logWarning
+    5903, fftCharacter, 0, 0,
+    // $logError
+    5904, fftCharacter, 0, 0,
+    // $logFatal
+    5905, fftCharacter, 0, 0
 };
 
 // Table of Methods available for Simple
@@ -62,7 +79,12 @@ ECOparam cStaticMethodsParamsTable[] =
 // 7) Enum Stop (Not sure what this does, 0 = disabled)
 ECOmethodEvent cStaticMethodsTable[] = 
 {
-	cStaticMethodStaticEmpty, cStaticMethodStaticEmpty, fftBoolean, 1, &cStaticMethodsParamsTable[0], 0, 0
+	cStaticMethodLogTrace,   cStaticMethodLogTrace,   fftBoolean, 1, &cStaticMethodsParamsTable[0], 0, 0,
+    cStaticMethodLogDebug,   cStaticMethodLogDebug,   fftBoolean, 1, &cStaticMethodsParamsTable[1], 0, 0,
+    cStaticMethodLogInfo,    cStaticMethodLogInfo,    fftBoolean, 1, &cStaticMethodsParamsTable[2], 0, 0,
+    cStaticMethodLogWarning, cStaticMethodLogWarning, fftBoolean, 1, &cStaticMethodsParamsTable[3], 0, 0,
+    cStaticMethodLogError,   cStaticMethodLogError,   fftBoolean, 1, &cStaticMethodsParamsTable[4], 0, 0,
+    cStaticMethodLogFatal,   cStaticMethodLogFatal,   fftBoolean, 1, &cStaticMethodsParamsTable[5], 0, 0
 };
 
 // List of methods in Simple
@@ -73,17 +95,107 @@ qlong returnStaticMethods(tThreadData* pThreadData)
 	return ECOreturnMethods( gInstLib, pThreadData->mEci, &cStaticMethodsTable[0], cStaticMethodCount );
 }
 
-// Implementation of single static method
-void methodStaticEmpty(tThreadData* pThreadData, qshort paramCount) {
+// Log trace message
+void methodStaticLogTrace(tThreadData* pThreadData, qshort paramCount) {
 	
-	// Build return value
-	EXTfldval valReturn;
-	valReturn.setBool(qtrue);
+    // Read message and post to log
+    EXTfldval messageVal;
+    bool success = false;
+	if( getParamVar(pThreadData, 1, messageVal) == qtrue ) {
+        LOG_TRACE << getStringFromEXTFldVal(messageVal);
+        success = true;
+    }
+    
+    // Return bool to caller
+    EXTfldval retVal;    
+    getEXTFldValFromBool(retVal, success);
+    ECOaddParam(pThreadData->mEci, &retVal);
+}
+
+// Log debug message
+void methodStaticLogDebug(tThreadData* pThreadData, qshort paramCount) {
 	
-	// Return it to Omnis
-	ECOaddParam(pThreadData->mEci, &valReturn);
+    // Read message and post to log
+    EXTfldval messageVal;
+    bool success = false;
+	if( getParamVar(pThreadData, 1, messageVal) == qtrue ) {
+        LOG_DEBUG << getStringFromEXTFldVal(messageVal);
+        success = true;
+    }
+    
+    // Return bool to caller
+    EXTfldval retVal;    
+    getEXTFldValFromBool(retVal, success);
+    ECOaddParam(pThreadData->mEci, &retVal);
+}
+
+// Log info message
+void methodStaticLogInfo(tThreadData* pThreadData, qshort paramCount) {
+    
+    // Read message and post to log
+    EXTfldval messageVal;
+    bool success = false;
+	if( getParamVar(pThreadData, 1, messageVal) == qtrue ) {
+        LOG_INFO << getStringFromEXTFldVal(messageVal);
+        
+        success = true;
+    }
+    
+    // Return bool to caller
+    EXTfldval retVal;    
+    getEXTFldValFromBool(retVal, success);
+    ECOaddParam(pThreadData->mEci, &retVal);
+}
+
+// Log warning message
+void methodStaticLogWarning(tThreadData* pThreadData, qshort paramCount) {
 	
-	return;
+    // Read message and post to log
+    EXTfldval messageVal;
+    bool success = false;
+	if( getParamVar(pThreadData, 1, messageVal) == qtrue ) {
+        LOG_WARNING << getStringFromEXTFldVal(messageVal);
+        success = true;
+    }
+    
+    // Return bool to caller
+    EXTfldval retVal;    
+    getEXTFldValFromBool(retVal, success);
+    ECOaddParam(pThreadData->mEci, &retVal);
+}
+
+// Log error message
+void methodStaticLogError(tThreadData* pThreadData, qshort paramCount) {
+	
+    // Read message and post to log
+    EXTfldval messageVal;
+    bool success = false;
+	if( getParamVar(pThreadData, 1, messageVal) == qtrue ) {
+        LOG_ERROR << getStringFromEXTFldVal(messageVal);
+        success = true;
+    }
+    
+    // Return bool to caller
+    EXTfldval retVal;    
+    getEXTFldValFromBool(retVal, success);
+    ECOaddParam(pThreadData->mEci, &retVal);
+}
+
+// Log fatal message
+void methodStaticLogFatal(tThreadData* pThreadData, qshort paramCount) {
+	
+    // Read message and post to log
+    EXTfldval messageVal;
+    bool success = false;
+	if( getParamVar(pThreadData, 1, messageVal) == qtrue ) {
+        LOG_FATAL << getStringFromEXTFldVal(messageVal);
+        success = true;
+    }
+    
+    // Return bool to caller
+    EXTfldval retVal;    
+    getEXTFldValFromBool(retVal, success);
+    ECOaddParam(pThreadData->mEci, &retVal);
 }
 
 // Static method dispatch
@@ -94,9 +206,29 @@ qlong staticMethodCall( OmnisTools::tThreadData* pThreadData ) {
 	
 	switch( funcId )
 	{
-		case cStaticMethodStaticEmpty:
-			pThreadData->mCurMethodName = "$staticEmpty";
-			methodStaticEmpty(pThreadData, paramCount);
+		case cStaticMethodLogTrace:
+			pThreadData->mCurMethodName = "$logTrace";
+			methodStaticLogTrace(pThreadData, paramCount);
+			break;
+        case cStaticMethodLogDebug:
+			pThreadData->mCurMethodName = "$logDebug";
+			methodStaticLogDebug(pThreadData, paramCount);
+			break;
+        case cStaticMethodLogInfo:
+			pThreadData->mCurMethodName = "$logInfo";
+			methodStaticLogInfo(pThreadData, paramCount);
+			break;
+        case cStaticMethodLogWarning:
+			pThreadData->mCurMethodName = "$logWarning";
+			methodStaticLogWarning(pThreadData, paramCount);
+			break;
+        case cStaticMethodLogError:
+			pThreadData->mCurMethodName = "$logError";
+			methodStaticLogError(pThreadData, paramCount);
+			break;
+        case cStaticMethodLogFatal:
+			pThreadData->mCurMethodName = "$logFatal";
+			methodStaticLogFatal(pThreadData, paramCount);
 			break;
 	}
 	

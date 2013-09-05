@@ -33,14 +33,13 @@
 
 #include <extcomp.he>
 #include "NVObjBase.he"
+#include "ThreadTimer.he"
 
 using namespace OmnisTools;
 
 // Constructor for building from an existing object instance
-NVObjBase::NVObjBase( qobjinst objinst ) 
-{
-	mObjInst = objinst;	// we remember the objects instance
-}
+NVObjBase::NVObjBase( qobjinst objinst ) : mObjInst(objinst)
+{ }
 
 // Generic destruction
 NVObjBase::~NVObjBase()
@@ -51,8 +50,9 @@ NVObjBase::~NVObjBase()
 // Duplicate an object into a new object
 NVObjBase* NVObjBase::dup( qlong propID, qobjinst objinst, tThreadData *pThreadData  )
 {
-	NVObjBase* copy = (NVObjBase*)createObject(propID, objinst, pThreadData);  // Defined in jsoncpp
-	return copy;
+	NVObjBase* theCopy = (NVObjBase*)createObject(propID, objinst, pThreadData);  // Create new object
+    theCopy->copy(this); // Copy contents
+	return theCopy;  // Return to caller
 }
 
 // Copy one objects contents into another objects contents.
@@ -62,6 +62,12 @@ void NVObjBase::copy( NVObjBase* pObj )
 	*this = *pObj;
 	
 	mObjInst = inst;
+}
+
+int NVObjBase::notify() {
+    assert(2==1); // Must override in subclass
+
+	return 0;
 }
 
 // Methods Available and Method Call Handling (These should be overriden by a sub-class)

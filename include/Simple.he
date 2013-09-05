@@ -39,23 +39,56 @@
 #include "NVObjBase.he"
 #include "OmnisTools.he"
 
+#include <boost/thread.hpp>
+
 #ifndef SIMPLE_HE_
 #define SIMPLE_HE_
+
+class ThreadTimer;
+class NVObjSimple;
+
+EXTqlist* doWork(NVObjSimple* theObj, qlong* curCount, std::string connInfo, std::string query, EXTqlist* list);
+
+// Example of Functor thread
+class WorkObj {
+private:
+    NVObjSimple* _theObj;
+    qlong* _count;
+    EXTqlist* _list;
+    std::string _query;
+    std::string _connInfo;
+public:
+    WorkObj() : _theObj(0), _count(0) {}
+    WorkObj(NVObjSimple* theObj, qlong* count, std::string connInfo, std::string query, EXTqlist* list) : _theObj(theObj), _count(count), _connInfo(connInfo), _query(query), _list(list) {}
+    void operator()() {
+        doWork(_theObj,_count, _connInfo, _query, _list);
+    }
+    
+    EXTqlist* result() { return _list; }
+};
 
 // Class definition for C++ version of your object
 class NVObjSimple : public NVObjBase
 {
 private:
-	qlong				myProperty; /* Value for $myproperty */
+	qlong myProperty; /* Value for $myproperty */
 	qlong curCount;
+    bool _threadRunning;
+    boost::thread currentThread;
+    WorkObj _work;
+    std::string _query;
+    std::string _connInfo;
 protected:
-public:		
+public:		    
 	// Static tracking variable
 	static qshort objResourceId;  // This static variable needs to be in all inherited objects
 	
 	// Constructor / Destructor
 	NVObjSimple( qobjinst objinst, OmnisTools::tThreadData *pThreadData );
 	virtual ~NVObjSimple();
+    
+    // Thread timer
+    virtual int notify();
 
 	// Methods Available and Method Call Handling
 	virtual qlong returnMethods( OmnisTools::tThreadData* pThreadData );
@@ -76,8 +109,8 @@ public:
 	void startThread();
 	void stopThread();
 	void checkThread();
-	
-	//void doWork();
+    
+    bool _workStopped;
 };
 
 #endif /* SIMPLE_HE_ */
