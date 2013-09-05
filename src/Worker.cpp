@@ -502,7 +502,8 @@ Worker::ParamMap PostgreSQLNotifyDelegate::run(Worker::ParamMap& params) {
         std::vector<std::string> listens = popListens();
         for(std::vector<std::string>::iterator it = listens.begin(); it != listens.end(); ++it) {
             workDone = true;
-            command = str(format("LISTEN %s") % *it);
+            command = str(format("LISTEN %s") 
+                          % PQescapeIdentifier(connection.raw(), it->c_str(), it->length()));
             LOG_INFO << command;
             connection.execute(command);
             // Wait for command to execute on server, this must be done otherwise the transaction will get rolled back.
@@ -527,7 +528,8 @@ Worker::ParamMap PostgreSQLNotifyDelegate::run(Worker::ParamMap& params) {
         std::vector<std::string> unlistens = popUnlistens();
         for(std::vector<std::string>::iterator it = unlistens.begin(); it != unlistens.end(); ++it) {
             workDone = true;
-            command = str(format("UNLISTEN %s") % *it);
+            command = str(format("UNLISTEN %s") 
+                          % PQescapeIdentifier(connection.raw(), it->c_str(), it->length()));
             LOG_INFO << command;
             connection.execute(command);
             // Wait for command to execute on server, this must be done otherwise the transaction will get rolled back.
@@ -552,7 +554,9 @@ Worker::ParamMap PostgreSQLNotifyDelegate::run(Worker::ParamMap& params) {
         std::vector<std::pair<std::string, std::string> > notifications = popNotifications();
         for(std::vector<std::pair<std::string, std::string> >::iterator it = notifications.begin(); it != notifications.end(); ++it) {
             workDone = true;
-            command = str(format("SELECT pg_notify('%s', '%s')") % it->first % it->second);
+            command = str(format("SELECT pg_notify(%s, %s)") 
+                          % PQescapeLiteral(connection.raw(), it->first.c_str(), it->first.length()) 
+                          % PQescapeLiteral(connection.raw(), it->second.c_str(), it->second.length()));
             LOG_INFO << command;
             connection.execute(command);
             // Wait for command to execute on server, this must be done otherwise the transaction will get rolled back.
