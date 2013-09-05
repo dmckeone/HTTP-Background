@@ -32,7 +32,6 @@
 		B01BE7061451848700D8DB73 /* NVObjQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B01BE7041451848700D8DB73 /* NVObjQueue.cpp */; };
 		B02360CC11765D30001236FE /* NVObjBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02360C911765D30001236FE /* NVObjBase.cpp */; };
 		B02360CD11765D30001236FE /* TMWorkQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02360CA11765D30001236FE /* TMWorkQueue.cpp */; };
-		B02360CE11765D30001236FE /* Simple.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02360CB11765D30001236FE /* Simple.cpp */; };
 		B02361D111765E35001236FE /* TMWorkQueue.rc in Resources */ = {isa = PBXBuildFile; fileRef = B02361D011765E35001236FE /* TMWorkQueue.rc */; };
 		B03C1D50130EDBCB00661BC0 /* Static.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03C1D4F130EDBCB00661BC0 /* Static.cpp */; };
 		B0A0716214420B0200337E35 /* ThreadTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0A0716014420B0200337E35 /* ThreadTimer.cpp */; };
@@ -83,10 +82,8 @@
 		B01BE707145184C500D8DB73 /* NVObjQueue.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = NVObjQueue.he; path = ../../include/NVObjQueue.he; sourceTree = "<group>"; };
 		B02360C911765D30001236FE /* NVObjBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NVObjBase.cpp; path = ../../src/NVObjBase.cpp; sourceTree = SOURCE_ROOT; };
 		B02360CA11765D30001236FE /* TMWorkQueue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = TMWorkQueue.cpp; path = ../../src/TMWorkQueue.cpp; sourceTree = SOURCE_ROOT; };
-		B02360CB11765D30001236FE /* Simple.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Simple.cpp; path = ../../src/Simple.cpp; sourceTree = SOURCE_ROOT; };
 		B02360CF11765D3A001236FE /* NVObjBase.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = NVObjBase.he; path = ../../include/NVObjBase.he; sourceTree = SOURCE_ROOT; };
 		B02360D011765D3A001236FE /* TMWorkQueue.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = TMWorkQueue.he; path = ../../include/TMWorkQueue.he; sourceTree = SOURCE_ROOT; };
-		B02360D111765D3A001236FE /* Simple.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Simple.he; path = ../../include/Simple.he; sourceTree = SOURCE_ROOT; };
 		B02361D011765E35001236FE /* TMWorkQueue.rc */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; name = TMWorkQueue.rc; path = ../../src/TMWorkQueue.rc; sourceTree = SOURCE_ROOT; };
 		B03C1D40130EDAE500661BC0 /* Static.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Static.he; path = ../../include/Static.he; sourceTree = SOURCE_ROOT; };
 		B03C1D4F130EDBCB00661BC0 /* Static.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Static.cpp; path = ../../src/Static.cpp; sourceTree = SOURCE_ROOT; };
@@ -163,7 +160,6 @@
 				B01BE6FF1451716500D8DB73 /* NVObjPostgreSQLWorker.cpp */,
 				0F08EF8A17D5FC4500257404 /* NVObjPostgreSQLNotifyWorker.cpp */,
 				B02360CA11765D30001236FE /* TMWorkQueue.cpp */,
-				B02360CB11765D30001236FE /* Simple.cpp */,
 				B03C1D4F130EDBCB00661BC0 /* Static.cpp */,
 				B0A0716014420B0200337E35 /* ThreadTimer.cpp */,
 				B0E3AFF1147AC6FD00FC75DF /* Constants.cpp */,
@@ -191,7 +187,6 @@
 				B01BE7021451719900D8DB73 /* NVObjPostgreSQLWorker.he */,
 				0F08EF8C17D5FC4E00257404 /* NVObjPostgreSQLNotifyWorker.he */,
 				B02360D011765D3A001236FE /* TMWorkQueue.he */,
-				B02360D111765D3A001236FE /* Simple.he */,
 				B03C1D40130EDAE500661BC0 /* Static.he */,
 				B0A0716314420B2000337E35 /* ThreadTimer.he */,
 				B0E3AFEF147AC6E200FC75DF /* Constants.he */,
@@ -317,7 +312,6 @@
 			files = (
 				B02360CC11765D30001236FE /* NVObjBase.cpp in Sources */,
 				B02360CD11765D30001236FE /* TMWorkQueue.cpp in Sources */,
-				B02360CE11765D30001236FE /* Simple.cpp in Sources */,
 				B0A46050125F550F003A3050 /* OmnisTools.cpp in Sources */,
 				B03C1D50130EDBCB00661BC0 /* Static.cpp in Sources */,
 				B0A0716214420B0200337E35 /* ThreadTimer.cpp in Sources */,

@@ -38,7 +38,6 @@
 
 #include "Logging.he"
 #include "Static.he"
-#include "Simple.he"
 #include "NVObjQueue.he"
 #include "NVObjPostgreSQLWorker.he"
 #include "NVObjPostgreSQLNotifyWorker.he"
@@ -63,13 +62,11 @@ const static qshort kConstResourcePrefix = 23000,
 const static qshort cNVObjGroup = 1001;
 
 // Resource # for objects.  In this project it is also the Unique ID; when an object is called mCompId will equal this.
-const qshort cNVObjSimple = 1002,
-             cNVObjQueue  = 1003,
+const qshort cNVObjQueue  = 1003,
              cNVObjPostgreSQLWorker = 1004,
              cNVObjPostgreSQLNotifyWorker = 1005;
 
 // Set static id's for matching classes (This is used for creating new objects without needing to know the Omnis ID. See: OmnisTools::createNVObj() )
-qshort NVObjSimple::objResourceId = cNVObjSimple;
 qshort NVObjQueue::objResourceId  = cNVObjQueue;
 qshort NVObjPostgreSQLWorker::objResourceId = cNVObjPostgreSQLWorker;
 
@@ -81,7 +78,6 @@ qshort NVObjPostgreSQLWorker::objResourceId = cNVObjPostgreSQLWorker;
 // 4)Group resource ID - The group resource can be passed in here (Like DOM Types for oXML)
 ECOobject objectsTable[] =
 {
-	cNVObjSimple, cNVObjSimple, 0, cNVObjGroup,
     cNVObjQueue, cNVObjQueue, 0, cNVObjGroup,
     cNVObjPostgreSQLWorker, cNVObjPostgreSQLWorker, 0, cNVObjGroup,
     cNVObjPostgreSQLNotifyWorker, cNVObjPostgreSQLNotifyWorker, 0, cNVObjGroup
@@ -92,8 +88,6 @@ const qshort cObjCount = sizeof(objectsTable) / sizeof(ECOobject); // Number of 
 // Return the proper C++ object instance to the message handling method
 NVObjBase* createObject( qlong propID, qobjinst objinst, tThreadData *pThreadData ) {
 	switch( propID ) {
-		case cNVObjSimple:
-			return new NVObjSimple(objinst, pThreadData);
         case cNVObjQueue:
             return new NVObjQueue(objinst, pThreadData);
         case cNVObjPostgreSQLWorker:
@@ -110,9 +104,6 @@ void copyObject( qlong propID, objCopyInfo* copyInfo, tThreadData *pThreadData )
     using OmnisTools::copyNVObj;
     
     switch (propID) {
-        case cNVObjSimple:
-            copyNVObj<NVObjSimple>(propID, copyInfo, pThreadData);
-            break;
         case cNVObjQueue:
             copyNVObj<NVObjQueue>(propID, copyInfo, pThreadData);
             break;
@@ -130,9 +121,6 @@ void copyObject( qlong propID, objCopyInfo* copyInfo, tThreadData *pThreadData )
 // Delete the proper C++ object instance
 void removeObject( qlong propID, NVObjBase* nvObj ) {
 	switch( propID ) {
-		case cNVObjSimple:
-			delete (NVObjSimple*)nvObj;
-			break;
         case cNVObjQueue:
 			delete (NVObjQueue*)nvObj;
 			break;

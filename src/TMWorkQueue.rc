@@ -3,24 +3,9 @@ STRINGTABLE DISCARDABLE
 BEGIN
 		 1000									"TMWorkQueue"
 		 1001									"TMWorkQueue"
-		 1002									"Simple: Example for how to create a non-visual object in Omnis Studio"
          1003									"Queue: Worker queue"
 		 1004									"PostgreSQL Worker: PostgreSQL Worker object"
          1005									"PostgreSQL Notifier: PostgreSQL Notifier (LISTEN/NOTIFY) object"
-         
-         // Simple Object
-		 2000									"$error:$error(ErrorCode, ErrorDesc, ErrorText, MethodName) is called when an error has occurred. (Override to receive messages)"
-		 2001									"$start:$start starts the thread."
-		 2002									"$stop:$stop stops the thread."
-		 2003									"$check:$check checks the value in the thread."
-		 
-		 2500									"$myProperty:$myproperty returns a number"
-		 
-		 2900									"ErrorCode"
-		 2901									"ErrorDesc"
-		 2902									"ErrorText"
-		 2903									"MethodName"
-		 2904									"Number"
 
 		 // Queue Object
 		 3000									"$error:$error(ErrorCode, ErrorDesc, ErrorText, MethodName) is called when an error has occurred. (Override to receive messages)"
