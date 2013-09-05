@@ -341,7 +341,8 @@ tResult NVObjPostgreSQLWorker::methodInitialize( tThreadData* pThreadData, qshor
     }
     
     // Create new worker object
-    _worker = boost::make_shared<Worker>(params,boost::make_shared<PostgreSQLDelegate>());
+	boost::shared_ptr<PostgreSQLDelegate> bgDelegate = boost::make_shared<PostgreSQLDelegate>();
+    _worker = boost::make_shared<Worker>(params, bgDelegate);
     
     // Call all worker initialization code while on main thread
     _worker->init();

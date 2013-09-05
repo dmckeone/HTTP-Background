@@ -32,7 +32,7 @@ public:
     typedef std::map<std::string, boost::any, Tools::CaseInsensitiveLess>::iterator ParamMapIterator;
     
     Worker();
-    Worker(const ParamMap& p, const boost::shared_ptr<WorkerDelegate>& d);
+    Worker(const ParamMap& p, boost::shared_ptr<WorkerDelegate> d);
     Worker(const Worker& w);
     virtual ~Worker();
     

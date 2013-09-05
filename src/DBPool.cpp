@@ -219,7 +219,7 @@ void PostgreSQLConnection::cancel() {
         boost::shared_ptr<PGcancel> cancel = boost::shared_ptr<PGcancel>(PQgetCancel(_connection.get()), PQfreeCancel);
         
         // Dispatch request
-        int errSize = 256;  // Recommended by: http://www.postgresql.org/docs/9.1/interactive/libpq-cancel.html
+        const int errSize = 256;  // Recommended by: http://www.postgresql.org/docs/9.1/interactive/libpq-cancel.html
         char error[errSize];
         if( PQcancel(cancel.get(), error, errSize) != 1 ) {
             LOG_ERROR << str(format("Failed to dispatch cancel request.  Error %s") % std::string(error));

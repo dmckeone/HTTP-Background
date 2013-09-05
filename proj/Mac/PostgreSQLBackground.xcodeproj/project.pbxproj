@@ -352,7 +352,6 @@
 			buildSettings = {
 				ARCHS = i386;
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
-				PRODUCT_NAME = PostgreSQLBackground;
 			};
 			name = Development;
 		};
@@ -364,7 +363,6 @@
 					i386,
 				);
 				GCC_ENABLE_FIX_AND_CONTINUE = NO;
-				PRODUCT_NAME = PostgreSQLBackground;
 				SKIP_INSTALL = NO;
 			};
 			name = Deployment;
@@ -404,7 +402,7 @@
 					"-Dismach-o",
 					"-D_DEBUG",
 				);
-				PRODUCT_NAME = TMWorkQueue;
+				PRODUCT_NAME = PostgreSQLBackground;
 				REZ_SEARCH_PATHS = (
 					$PROJECT_DIR/../../resource,
 					/Developer/Headers/FlatCarbon,
@@ -449,7 +447,7 @@
 					"-Dismach_o",
 					"-Dismach-o",
 				);
-				PRODUCT_NAME = TMWorkQueue;
+				PRODUCT_NAME = PostgreSQLBackground;
 				REZ_SEARCH_PATHS = (
 					$PROJECT_DIR/../../resource,
 					/Developer/Headers/FlatCarbon,

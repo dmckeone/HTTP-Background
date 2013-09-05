@@ -377,7 +377,8 @@ tResult NVObjPostgreSQLNotifyWorker::methodInitialize( tThreadData* pThreadData,
     }
     
     // Create new worker object
-    _worker = boost::make_shared<Worker>(params, boost::make_shared<PostgreSQLNotifyDelegate>());
+	boost::shared_ptr<PostgreSQLNotifyDelegate> notifyDelegate = boost::make_shared<PostgreSQLNotifyDelegate>();
+    _worker = boost::make_shared<Worker>(params, notifyDelegate);
     
     // Call all worker initialization code while on main thread
     _worker->init();

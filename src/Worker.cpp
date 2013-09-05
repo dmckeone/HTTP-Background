@@ -27,7 +27,7 @@ static const int WAIT_MS = 500;  // Time to sleep when nothing is done and waiti
 Worker::Worker() : _complete(false), _running(false), _cancelled(false) 
 { }
 
-Worker::Worker(const ParamMap& p, const boost::shared_ptr<WorkerDelegate>& d) : _params(p), _delegate(d), _complete(false), _running(false), _cancelled(false) 
+Worker::Worker(const ParamMap& p, boost::shared_ptr<WorkerDelegate> d) : _params(p), _delegate(d), _complete(false), _running(false), _cancelled(false) 
 { }
 
 Worker::Worker(const Worker& w)
@@ -63,6 +63,9 @@ void Worker::init() {
     if (_delegate) {
         _delegate->init(_params);
     }
+	_complete = false;
+	_cancelled = false;
+	_running = false;
 }
 
 bool Worker::running() {
@@ -230,6 +233,7 @@ void Worker::WorkerThread::operator()() {
 
 void PostgreSQLDelegate::init(Worker::ParamMap& params) {
     // DEV NOTE: Lists can be populated in a background object, but must be allocated on the main thread.
+	cancelled = false;
 }
 
 void PostgreSQLDelegate::cancel() {
@@ -471,6 +475,7 @@ bool PostgreSQLNotifyDelegate::hasReceived() {
 
 void PostgreSQLNotifyDelegate::init(Worker::ParamMap& params) {
     // DEV NOTE: Lists can be populated in a background object, but must be allocated on the main thread.
+	cancelled = false;
 }
 
 void PostgreSQLNotifyDelegate::cancel() {

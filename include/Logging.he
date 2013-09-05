@@ -6,6 +6,7 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+#include <iostream>
 
 #ifndef LOGGING_HE_
 #define LOGGING_HE_
