@@ -1,0 +1,4 @@
+LIBRARY         PostgreSQLBackground
+EXPORTS
+    NVObjWndProc  @1
+ 

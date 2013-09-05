@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0F0203CC17D8AFA600C9B6A3 /* PostgreSQLBackground.rc in Resources */ = {isa = PBXBuildFile; fileRef = 0F0203CB17D8AFA600C9B6A3 /* PostgreSQLBackground.rc */; };
 		0F08EF8817D5F29000257404 /* libboost_thread-xgcc42-mt-1_49.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F08EF8717D5F29000257404 /* libboost_thread-xgcc42-mt-1_49.a */; };
 		0F08EF8B17D5FC4500257404 /* NVObjPostgreSQLNotifyWorker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F08EF8A17D5FC4500257404 /* NVObjPostgreSQLNotifyWorker.cpp */; };
 		0F08EF8D17D5FC4E00257404 /* NVObjPostgreSQLNotifyWorker.he in Resources */ = {isa = PBXBuildFile; fileRef = 0F08EF8C17D5FC4E00257404 /* NVObjPostgreSQLNotifyWorker.he */; };
@@ -32,7 +33,6 @@
 		B01BE7061451848700D8DB73 /* NVObjQueue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B01BE7041451848700D8DB73 /* NVObjQueue.cpp */; };
 		B02360CC11765D30001236FE /* NVObjBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02360C911765D30001236FE /* NVObjBase.cpp */; };
 		B02360CD11765D30001236FE /* PostgreSQLBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02360CA11765D30001236FE /* PostgreSQLBackground.cpp */; };
-		B02361D111765E35001236FE /* TMWorkQueue.rc in Resources */ = {isa = PBXBuildFile; fileRef = B02361D011765E35001236FE /* TMWorkQueue.rc */; };
 		B03C1D50130EDBCB00661BC0 /* Static.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03C1D4F130EDBCB00661BC0 /* Static.cpp */; };
 		B0A0716214420B0200337E35 /* ThreadTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0A0716014420B0200337E35 /* ThreadTimer.cpp */; };
 		B0A46050125F550F003A3050 /* OmnisTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0A4604F125F550F003A3050 /* OmnisTools.cpp */; };
@@ -69,6 +69,7 @@
 /* Begin PBXFileReference section */
 		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		0F0203CB17D8AFA600C9B6A3 /* PostgreSQLBackground.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = PostgreSQLBackground.rc; path = ../../src/PostgreSQLBackground.rc; sourceTree = "<group>"; };
 		0F08EF8717D5F29000257404 /* libboost_thread-xgcc42-mt-1_49.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-xgcc42-mt-1_49.a"; path = "/Boost/boost_1_49_0/stage/lib/libboost_thread-xgcc42-mt-1_49.a"; sourceTree = "<absolute>"; };
 		0F08EF8A17D5FC4500257404 /* NVObjPostgreSQLNotifyWorker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NVObjPostgreSQLNotifyWorker.cpp; path = ../../src/NVObjPostgreSQLNotifyWorker.cpp; sourceTree = "<group>"; };
 		0F08EF8C17D5FC4E00257404 /* NVObjPostgreSQLNotifyWorker.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = NVObjPostgreSQLNotifyWorker.he; path = ../../include/NVObjPostgreSQLNotifyWorker.he; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		B02360CA11765D30001236FE /* PostgreSQLBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PostgreSQLBackground.cpp; path = ../../src/PostgreSQLBackground.cpp; sourceTree = SOURCE_ROOT; };
 		B02360CF11765D3A001236FE /* NVObjBase.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = NVObjBase.he; path = ../../include/NVObjBase.he; sourceTree = SOURCE_ROOT; };
 		B02360D011765D3A001236FE /* PostgreSQLBackground.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = PostgreSQLBackground.he; path = ../../include/PostgreSQLBackground.he; sourceTree = SOURCE_ROOT; };
-		B02361D011765E35001236FE /* TMWorkQueue.rc */ = {isa = PBXFileReference; explicitFileType = text; fileEncoding = 4; name = TMWorkQueue.rc; path = ../../src/TMWorkQueue.rc; sourceTree = SOURCE_ROOT; };
 		B03C1D40130EDAE500661BC0 /* Static.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Static.he; path = ../../include/Static.he; sourceTree = SOURCE_ROOT; };
 		B03C1D4F130EDBCB00661BC0 /* Static.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Static.cpp; path = ../../src/Static.cpp; sourceTree = SOURCE_ROOT; };
 		B0A0716014420B0200337E35 /* ThreadTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadTimer.cpp; path = ../../src/ThreadTimer.cpp; sourceTree = "<group>"; };
@@ -144,7 +144,7 @@
 		089C167CFE841241C02AAC07 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				B02361D011765E35001236FE /* TMWorkQueue.rc */,
+				0F0203CB17D8AFA600C9B6A3 /* PostgreSQLBackground.rc */,
 				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
 			);
 			name = Resources;
@@ -281,8 +281,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				96CA4E550907E8CC00C234AA /* InfoPlist.strings in Resources */,
-				B02361D111765E35001236FE /* TMWorkQueue.rc in Resources */,
 				0F08EF8D17D5FC4E00257404 /* NVObjPostgreSQLNotifyWorker.he in Resources */,
+				0F0203CC17D8AFA600C9B6A3 /* PostgreSQLBackground.rc in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

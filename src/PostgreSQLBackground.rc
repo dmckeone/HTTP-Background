@@ -1,0 +1,87 @@
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+		 1000									"PostgreSQL Background"
+		 1001									"PostgreSQL Background"
+         1003									"Queue: Worker queue"
+		 1004									"PostgreSQL Worker: PostgreSQL Worker object"
+         1005									"PostgreSQL Notifier: PostgreSQL Notifier (LISTEN/NOTIFY) object"
+
+		 // Queue Object
+		 3000									"$error:$error(ErrorCode, ErrorDesc, ErrorText, MethodName) is called when an error has occurred. (Override to receive messages)"
+		 3001									"$initialize:$initialize initializes the queue"
+
+		 3500									"$myProperty:$myproperty returns a number"
+
+		 3900									"ErrorCode"
+		 3901									"ErrorDesc"
+		 3902									"ErrorText"
+		 3903									"MethodName"
+		 3904									"Number"
+
+		 // Worker Object
+		 4000									"$error:$error(ErrorCode, ErrorDesc, ErrorText, MethodName) is called when an error has occurred. (Override to receive messages)"
+		 4001									"$initialize:$initialize initializes the object"
+		 4002									"$run:$run runs the task on the main thread"
+		 4003									"$start:$start runs the task on a background thread"
+		 4004									"$cancel:$cancel cancels the background thread"
+
+		 4500									"$myProperty:$myproperty returns a number"
+
+		 4900									"ErrorCode"
+		 4901									"ErrorDesc"
+		 4902									"ErrorText"
+		 4903									"MethodName"
+		 4904									"Number"
+
+		 // Notify Object
+		 5000									"$error:$error(ErrorCode, ErrorDesc, ErrorText, MethodName) is called when an error has occurred. (Override to receive messages)"
+		 5001									"$initialize:$initialize initializes the object"
+		 5002									"$run:$run runs the task on the main thread"
+		 5003									"$start:$start runs the task on a background thread"
+		 5004									"$cancel:$cancel cancels the background thread (Resets all listening channels)"
+         5005                                   "$listen:$listen(channel) listens to a notification channel.  (Note: No spaces in the channel name)"
+         5006                                   "$unlisten:$unlisten(channel) stops listening to a notification channel.  (Note: No spaces in the channel name)"
+         5007                                   "$notify:$notify(channel, payload) sends a notification and an optional payload.  (Note: No spaces in the channel name)"
+
+
+		 5500									"$myProperty:$myproperty returns a number"
+
+		 5900									"ErrorCode"
+		 5901									"ErrorDesc"
+		 5902									"ErrorText"
+		 5903									"MethodName"
+		 5904									"Channel"
+		 5905									"Channel"
+		 5906									"Channel"
+		 5907									"Payload"
+
+        // Static Methods
+        20000									"$logTrace:$logTrace(Character message) log a trace message."
+		20001									"$logDebug:$logDebug(Character message) log a debug message."
+        20002									"$logInfo:$logInfo(Character message) log an info message."
+        20003									"$logWarning:$logWarning(Character message) log a warning message."
+        20004									"$logError:$logError(Character message) log an error message."
+        20005									"$logFatal:$logFatal(Character message) log a fatal message."
+		 
+        20900									"message"
+        20901									"message"
+        20902									"message"
+        20903									"message"
+        20904									"message"
+        20905									"message"
+		
+        // Constants
+		23000									"kTMTask"
+		23001									"Category~MyConstant:0:MyConstant:Description of my constant"
+		
+		23100									"Errors~ErrNone:0:ErrNone:No error"
+		23101									"ErrBadMethod:-101:ErrBadMethod:Bad method index (internal error)"
+		23102									"ErrBadParams:-102:ErrBadParams:Invalid or invalid number of paramters have been passed to the method"
+		23103									"ErrMemory:-103:ErrMemory:Out of memory"
+		23104									"ErrNotSupported:-104:ErrNotSupported:The feature is not supported"
+		 
+		31000									"NVObjWndProc"
+END
+
+
