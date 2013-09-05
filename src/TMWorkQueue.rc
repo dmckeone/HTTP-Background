@@ -1,8 +1,8 @@
 
 STRINGTABLE DISCARDABLE 
 BEGIN
-		 1000									"TMWorkQueue"
-		 1001									"TMWorkQueue"
+		 1000									"PostgreSQLBackground"
+		 1001									"PostgreSQLBackground"
          1003									"Queue: Worker queue"
 		 1004									"PostgreSQL Worker: PostgreSQL Worker object"
          1005									"PostgreSQL Notifier: PostgreSQL Notifier (LISTEN/NOTIFY) object"

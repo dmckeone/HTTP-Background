@@ -41,7 +41,7 @@
 #include "NVObjQueue.he"
 #include "NVObjPostgreSQLWorker.he"
 #include "NVObjPostgreSQLNotifyWorker.he"
-#include "TMWorkQueue.he"
+#include "PostgreSQLBackground.he"
 
 using OmnisTools::tThreadData;
 

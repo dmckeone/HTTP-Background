@@ -32,7 +32,7 @@
  */
 
 #include <extcomp.he>
-#include "TMWorkQueue.he"
+#include "PostgreSQLBackground.he"
 #include "OmnisTools.he"
 
 #ifndef NV_OBJ_BASE_HE_

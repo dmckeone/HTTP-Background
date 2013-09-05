@@ -37,8 +37,8 @@
  * Adapted from the Generic template provided by TigerLogic and omnis.net 
  */
 
-#ifndef TM_WORK_QUEUE_HE
-#define TM_WORK_QUEUE_HE
+#ifndef POSTGRESQL_BACKGROUND_HE
+#define POSTGRESQL_BACKGROUND_HE
 
 #include <extcomp.he>
 #include "OmnisTools.he"
@@ -48,4 +48,4 @@ class NVObjBase;  // To prevent circular include reference with NVObjBase.he dec
 NVObjBase* createObject( qlong propID, qobjinst objinst, OmnisTools::tThreadData* );
 void removeObject( qlong propID, NVObjBase* nvObj );
 
-#endif /* TM_WORK_QUEUE_HE */
+#endif /* POSTGRESQL_BACKGROUND_HE */

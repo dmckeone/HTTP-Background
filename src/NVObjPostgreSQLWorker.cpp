@@ -1,6 +1,6 @@
 //
 //  NVObjPostgreSQLWorker.cpp
-//  TMWorkQueue
+//  PostgreSQLBackground
 //
 //  Created by David McKeone on 11-10-21.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.

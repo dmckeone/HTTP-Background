@@ -16,7 +16,7 @@
                BlueprintIdentifier = "96D355F20908DD62006B6436"
                BuildableName = "ReleaseBuild"
                BlueprintName = "ReleaseBuild"
-               ReferencedContainer = "container:TMWorkQueue.xcodeproj">
+               ReferencedContainer = "container:PostgreSQLBackground.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -25,7 +25,7 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.GDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
-      buildConfiguration = "Deployment">
+      buildConfiguration = "Development">
       <Testables>
       </Testables>
    </TestAction>
@@ -34,7 +34,10 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.GDB"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
-      buildConfiguration = "Deployment">
+      buildConfiguration = "Development">
+      <PathRunnable
+         FilePath = "/Applications/OmnisStudio522.app">
+      </PathRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -45,7 +48,7 @@
       buildConfiguration = "Deployment">
    </ProfileAction>
    <AnalyzeAction
-      buildConfiguration = "Deployment">
+      buildConfiguration = "Development">
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Deployment"
