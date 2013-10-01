@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>English</string>
 	<key>CFBundleExecutable</key>
-	<string>PostgreSQLBackground</string>
+	<string>HTTPlib</string>
 	<key>CFBundleIdentifier</key>
 	<string>com.rainingdata.component</string>
 	<key>CFBundleInfoDictionaryVersion</key>

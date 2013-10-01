@@ -1,0 +1,4 @@
+LIBRARY         HTTPLib
+EXPORTS
+    NVObjWndProc  @1
+ 

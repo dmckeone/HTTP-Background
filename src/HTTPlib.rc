@@ -1,0 +1,51 @@
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+		 1000									"HTTP Background"
+		 1001									"HTTP Background"
+		 1003									"HTTP Worker: HTTP Worker object"
+
+		 // Worker Object
+		 4000									"$error:$error(ErrorCode, ErrorDesc, ErrorText, MethodName) is called when an error has occurred. (Override to receive messages)"
+		 4001									"$initialize:$initialize initializes the object"
+		 4002									"$run:$run runs the task on the main thread"
+		 4003									"$start:$start runs the task on a background thread"
+		 4004									"$cancel:$cancel cancels the background thread"
+
+		 4500									"$myProperty:$myproperty returns a number"
+
+		 4900									"ErrorCode"
+		 4901									"ErrorDesc"
+		 4902									"ErrorText"
+		 4903									"MethodName"
+		 4904									"Number"
+
+        // Static Methods
+        20000									"$logTrace:$logTrace(Character message) log a trace message."
+		20001									"$logDebug:$logDebug(Character message) log a debug message."
+        20002									"$logInfo:$logInfo(Character message) log an info message."
+        20003									"$logWarning:$logWarning(Character message) log a warning message."
+        20004									"$logError:$logError(Character message) log an error message."
+        20005									"$logFatal:$logFatal(Character message) log a fatal message."
+		 
+        20900									"message"
+        20901									"message"
+        20902									"message"
+        20903									"message"
+        20904									"message"
+        20905									"message"
+		
+        // Constants
+		23000									"kTMTask"
+		23001									"Category~MyConstant:0:MyConstant:Description of my constant"
+		
+		23100									"Errors~ErrNone:0:ErrNone:No error"
+		23101									"ErrBadMethod:-101:ErrBadMethod:Bad method index (internal error)"
+		23102									"ErrBadParams:-102:ErrBadParams:Invalid or invalid number of paramters have been passed to the method"
+		23103									"ErrMemory:-103:ErrMemory:Out of memory"
+		23104									"ErrNotSupported:-104:ErrNotSupported:The feature is not supported"
+		 
+		31000									"NVObjWndProc"
+END
+
+

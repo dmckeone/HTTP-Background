@@ -31,10 +31,11 @@
  * February 18, 2011 David McKeone (Created)
  */
 
+#include "Static.he"
+
 #include <extcomp.he>
 #include "OmnisTools.he"
 #include "Logging.he"
-#include "Static.he"
 
 using namespace OmnisTools;
 

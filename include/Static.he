@@ -35,8 +35,8 @@
  * February 18, 2011 David McKeone (Created)
  */
 
-#include <extcomp.he>
 #include "OmnisTools.he"
+#include <extcomp.he>
 
 #ifndef STATIC_HE_
 #define STATIC_HE_

@@ -10,6 +10,7 @@ deploy/*
 
 # Mac OS
 .DS_Store
+._*
 
 # Compiled Object files
 *.slo

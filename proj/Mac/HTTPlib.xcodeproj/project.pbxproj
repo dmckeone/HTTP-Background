@@ -1,0 +1,493 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 42;
+	objects = {
+
+/* Begin PBXAggregateTarget section */
+		96D355F20908DD62006B6436 /* ReleaseBuild */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 96D355F30908DD80006B6436 /* Build configuration list for PBXAggregateTarget "ReleaseBuild" */;
+			buildPhases = (
+			);
+			dependencies = (
+				9658838409BC64BB0063770F /* PBXTargetDependency */,
+			);
+			name = ReleaseBuild;
+			productName = ReleaseBuild;
+		};
+/* End PBXAggregateTarget section */
+
+/* Begin PBXBuildFile section */
+		0F0203CC17D8AFA600C9B6A3 /* HTTPlib.rc in Resources */ = {isa = PBXBuildFile; fileRef = 0F0203CB17D8AFA600C9B6A3 /* HTTPlib.rc */; };
+		0F08EF8817D5F29000257404 /* libboost_thread-xgcc42-mt-1_49.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F08EF8717D5F29000257404 /* libboost_thread-xgcc42-mt-1_49.a */; };
+		0F7A677E17D5F167001226B3 /* u_complib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0F7A677D17D5F167001226B3 /* u_complib.framework */; };
+		0F85659F17F093E700EC9D79 /* CppNetlibDelegate.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 0F85659E17F093E700EC9D79 /* CppNetlibDelegate.cpp */; };
+		0FCEAEE117F09C77006E3CD7 /* libboost_system-xgcc42-mt-1_49.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCEAEE017F09C77006E3CD7 /* libboost_system-xgcc42-mt-1_49.a */; };
+		0FCEAEE317F09C7A006E3CD7 /* libcppnetlib-client-connections.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCEAEE217F09C7A006E3CD7 /* libcppnetlib-client-connections.a */; };
+		0FCEAEE517F09C7C006E3CD7 /* libcppnetlib-uri.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCEAEE417F09C7C006E3CD7 /* libcppnetlib-uri.a */; };
+		0FCEAEE717F09C93006E3CD7 /* libssl.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCEAEE617F09C93006E3CD7 /* libssl.dylib */; };
+		0FCEAEE917F09C9D006E3CD7 /* libcrypto.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0FCEAEE817F09C9D006E3CD7 /* libcrypto.dylib */; };
+		96CA4E550907E8CC00C234AA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C167DFE841241C02AAC07 /* InfoPlist.strings */; };
+		96CA4E5A0907E8CC00C234AA /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */; };
+		B01BE7011451716500D8DB73 /* NVObjHTTPWorker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B01BE6FF1451716500D8DB73 /* NVObjHTTPWorker.cpp */; };
+		B02360CC11765D30001236FE /* NVObjBase.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02360C911765D30001236FE /* NVObjBase.cpp */; };
+		B02360CD11765D30001236FE /* HTTPlib.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B02360CA11765D30001236FE /* HTTPlib.cpp */; };
+		B03C1D50130EDBCB00661BC0 /* Static.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B03C1D4F130EDBCB00661BC0 /* Static.cpp */; };
+		B0A0716214420B0200337E35 /* ThreadTimer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0A0716014420B0200337E35 /* ThreadTimer.cpp */; };
+		B0A46050125F550F003A3050 /* OmnisTools.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0A4604F125F550F003A3050 /* OmnisTools.cpp */; };
+		B0C4C3F61460000E003D0911 /* Worker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0C4C3F41460000E003D0911 /* Worker.cpp */; };
+		B0E3AFF3147AC6FD00FC75DF /* Constants.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B0E3AFF1147AC6FD00FC75DF /* Constants.cpp */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		96CA4E5C0907E8CC00C234AA /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.rc";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(TEMP_FILE_DIR)/omnisrc/Localizable.strings",
+			);
+			script = "/Developer/Tools/omnisrc.app/Contents/MacOS/omnisrc INPUT_FILE_PATH TEMP_FILE_DIR REZ_SEARCH_PATHS XCOMP\ncp $TEMP_FILE_DIR/omnisrc/xcomp.rsrc $INSTALL_DIR/$CONTENTS_FOLDER_PATH/Resources";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXContainerItemProxy section */
+		9658838309BC64BB0063770F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 089C1669FE841209C02AAC07 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 96CA4E530907E8CC00C234AA;
+			remoteInfo = UnicodeCore;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		089C167EFE841241C02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
+		0F0203CB17D8AFA600C9B6A3 /* HTTPlib.rc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = HTTPlib.rc; path = ../../src/HTTPlib.rc; sourceTree = "<group>"; };
+		0F08EF8717D5F29000257404 /* libboost_thread-xgcc42-mt-1_49.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_thread-xgcc42-mt-1_49.a"; path = "/Boost/boost_1_49_0/stage/lib/libboost_thread-xgcc42-mt-1_49.a"; sourceTree = "<absolute>"; };
+		0F7A677D17D5F167001226B3 /* u_complib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = u_complib.framework; path = ../../../OmnisDependencies/Mac/complib/u_complib.framework; sourceTree = "<group>"; };
+		0F85659E17F093E700EC9D79 /* CppNetlibDelegate.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CppNetlibDelegate.cpp; path = ../../src/CppNetlibDelegate.cpp; sourceTree = "<group>"; };
+		0F8565A017F0941F00EC9D79 /* CppNetlibDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CppNetlibDelegate.h; path = ../../include/CppNetlibDelegate.h; sourceTree = "<group>"; };
+		0FCEAEE017F09C77006E3CD7 /* libboost_system-xgcc42-mt-1_49.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libboost_system-xgcc42-mt-1_49.a"; path = "/Boost/boost_1_49_0/stage/lib/libboost_system-xgcc42-mt-1_49.a"; sourceTree = "<absolute>"; };
+		0FCEAEE217F09C7A006E3CD7 /* libcppnetlib-client-connections.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcppnetlib-client-connections.a"; path = "/Boost/boost_1_49_0/stage/lib/libcppnetlib-client-connections.a"; sourceTree = "<absolute>"; };
+		0FCEAEE417F09C7C006E3CD7 /* libcppnetlib-uri.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libcppnetlib-uri.a"; path = "/Boost/boost_1_49_0/stage/lib/libcppnetlib-uri.a"; sourceTree = "<absolute>"; };
+		0FCEAEE617F09C93006E3CD7 /* libssl.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libssl.dylib; path = usr/lib/libssl.dylib; sourceTree = SDKROOT; };
+		0FCEAEE817F09C9D006E3CD7 /* libcrypto.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libcrypto.dylib; path = usr/lib/libcrypto.dylib; sourceTree = SDKROOT; };
+		96CA4E610907E8CC00C234AA /* HTTPlib.u_xcomp */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HTTPlib.u_xcomp; sourceTree = BUILT_PRODUCTS_DIR; };
+		B01BE6FF1451716500D8DB73 /* NVObjHTTPWorker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NVObjHTTPWorker.cpp; path = ../../src/NVObjHTTPWorker.cpp; sourceTree = "<group>"; };
+		B01BE7021451719900D8DB73 /* NVObjHTTPWorker.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = NVObjHTTPWorker.he; path = ../../include/NVObjHTTPWorker.he; sourceTree = "<group>"; };
+		B02360C911765D30001236FE /* NVObjBase.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = NVObjBase.cpp; path = ../../src/NVObjBase.cpp; sourceTree = SOURCE_ROOT; };
+		B02360CA11765D30001236FE /* HTTPlib.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = HTTPlib.cpp; path = ../../src/HTTPlib.cpp; sourceTree = SOURCE_ROOT; };
+		B02360CF11765D3A001236FE /* NVObjBase.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = NVObjBase.he; path = ../../include/NVObjBase.he; sourceTree = SOURCE_ROOT; };
+		B02360D011765D3A001236FE /* HTTPlib.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = HTTPlib.he; path = ../../include/HTTPlib.he; sourceTree = SOURCE_ROOT; };
+		B03C1D40130EDAE500661BC0 /* Static.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Static.he; path = ../../include/Static.he; sourceTree = SOURCE_ROOT; };
+		B03C1D4F130EDBCB00661BC0 /* Static.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Static.cpp; path = ../../src/Static.cpp; sourceTree = SOURCE_ROOT; };
+		B0A0716014420B0200337E35 /* ThreadTimer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ThreadTimer.cpp; path = ../../src/ThreadTimer.cpp; sourceTree = "<group>"; };
+		B0A0716314420B2000337E35 /* ThreadTimer.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = ThreadTimer.he; path = ../../include/ThreadTimer.he; sourceTree = "<group>"; };
+		B0A4604F125F550F003A3050 /* OmnisTools.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = OmnisTools.cpp; path = ../../src/OmnisTools.cpp; sourceTree = SOURCE_ROOT; };
+		B0A46051125F5517003A3050 /* OmnisTools.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.c.h; fileEncoding = 4; name = OmnisTools.he; path = ../../include/OmnisTools.he; sourceTree = SOURCE_ROOT; };
+		B0C4C3F2145FFFEB003D0911 /* Worker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Worker.h; path = ../../include/Worker.h; sourceTree = "<group>"; };
+		B0C4C3F41460000E003D0911 /* Worker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Worker.cpp; path = ../../src/Worker.cpp; sourceTree = "<group>"; };
+		B0C7FA8B146D3D1700191069 /* Logging.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Logging.he; path = ../../include/Logging.he; sourceTree = "<group>"; };
+		B0E3AFEF147AC6E200FC75DF /* Constants.he */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.h; fileEncoding = 4; name = Constants.he; path = ../../include/Constants.he; sourceTree = "<group>"; };
+		B0E3AFF1147AC6FD00FC75DF /* Constants.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Constants.cpp; path = ../../src/Constants.cpp; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		96CA4E590907E8CC00C234AA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0FCEAEE917F09C9D006E3CD7 /* libcrypto.dylib in Frameworks */,
+				0FCEAEE717F09C93006E3CD7 /* libssl.dylib in Frameworks */,
+				0F08EF8817D5F29000257404 /* libboost_thread-xgcc42-mt-1_49.a in Frameworks */,
+				0FCEAEE117F09C77006E3CD7 /* libboost_system-xgcc42-mt-1_49.a in Frameworks */,
+				0FCEAEE317F09C7A006E3CD7 /* libcppnetlib-client-connections.a in Frameworks */,
+				0FCEAEE517F09C7C006E3CD7 /* libcppnetlib-uri.a in Frameworks */,
+				0F7A677E17D5F167001226B3 /* u_complib.framework in Frameworks */,
+				96CA4E5A0907E8CC00C234AA /* Carbon.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		089C166AFE841209C02AAC07 /* xrandom */ = {
+			isa = PBXGroup;
+			children = (
+				96D631340905093100E0F291 /* Headers */,
+				08FB77ADFE841716C02AAC07 /* Source */,
+				089C167CFE841241C02AAC07 /* Resources */,
+				089C1671FE841209C02AAC07 /* External Frameworks and Libraries */,
+				19C28FB4FE9D528D11CA2CBB /* Products */,
+			);
+			name = xrandom;
+			sourceTree = "<group>";
+		};
+		089C1671FE841209C02AAC07 /* External Frameworks and Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				0FCEAEE817F09C9D006E3CD7 /* libcrypto.dylib */,
+				0FCEAEE617F09C93006E3CD7 /* libssl.dylib */,
+				0FCEAEE417F09C7C006E3CD7 /* libcppnetlib-uri.a */,
+				0FCEAEE217F09C7A006E3CD7 /* libcppnetlib-client-connections.a */,
+				0FCEAEE017F09C77006E3CD7 /* libboost_system-xgcc42-mt-1_49.a */,
+				0F08EF8717D5F29000257404 /* libboost_thread-xgcc42-mt-1_49.a */,
+				0F7A677D17D5F167001226B3 /* u_complib.framework */,
+				08EA7FFBFE8413EDC02AAC07 /* Carbon.framework */,
+			);
+			name = "External Frameworks and Libraries";
+			sourceTree = "<group>";
+		};
+		089C167CFE841241C02AAC07 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0F0203CB17D8AFA600C9B6A3 /* HTTPlib.rc */,
+				089C167DFE841241C02AAC07 /* InfoPlist.strings */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		08FB77ADFE841716C02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				B0C4C3F3145FFFF1003D0911 /* C++ Objects */,
+				B0A4604F125F550F003A3050 /* OmnisTools.cpp */,
+				B02360C911765D30001236FE /* NVObjBase.cpp */,
+				B01BE6FF1451716500D8DB73 /* NVObjHTTPWorker.cpp */,
+				B02360CA11765D30001236FE /* HTTPlib.cpp */,
+				B03C1D4F130EDBCB00661BC0 /* Static.cpp */,
+				B0A0716014420B0200337E35 /* ThreadTimer.cpp */,
+				B0E3AFF1147AC6FD00FC75DF /* Constants.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		19C28FB4FE9D528D11CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				96CA4E610907E8CC00C234AA /* HTTPlib.u_xcomp */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		96D631340905093100E0F291 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				B0C4C3F1145FFFB7003D0911 /* C++ Objects */,
+				B0A46051125F5517003A3050 /* OmnisTools.he */,
+				B0C7FA8B146D3D1700191069 /* Logging.he */,
+				B02360CF11765D3A001236FE /* NVObjBase.he */,
+				B01BE7021451719900D8DB73 /* NVObjHTTPWorker.he */,
+				B02360D011765D3A001236FE /* HTTPlib.he */,
+				B03C1D40130EDAE500661BC0 /* Static.he */,
+				B0A0716314420B2000337E35 /* ThreadTimer.he */,
+				B0E3AFEF147AC6E200FC75DF /* Constants.he */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		B0C4C3F1145FFFB7003D0911 /* C++ Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B0C4C3F2145FFFEB003D0911 /* Worker.h */,
+				0F8565A017F0941F00EC9D79 /* CppNetlibDelegate.h */,
+			);
+			name = "C++ Objects";
+			sourceTree = "<group>";
+		};
+		B0C4C3F3145FFFF1003D0911 /* C++ Objects */ = {
+			isa = PBXGroup;
+			children = (
+				B0C4C3F41460000E003D0911 /* Worker.cpp */,
+				0F85659E17F093E700EC9D79 /* CppNetlibDelegate.cpp */,
+			);
+			name = "C++ Objects";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		96CA4E530907E8CC00C234AA /* UnicodeCore */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 96CA4E5D0907E8CC00C234AA /* Build configuration list for PBXNativeTarget "UnicodeCore" */;
+			buildPhases = (
+				96CA4E540907E8CC00C234AA /* Resources */,
+				96CA4E570907E8CC00C234AA /* Sources */,
+				96CA4E590907E8CC00C234AA /* Frameworks */,
+				B09B3D25145018C600B2C5D6 /* Run Script */,
+			);
+			buildRules = (
+				96CA4E5C0907E8CC00C234AA /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = UnicodeCore;
+			productInstallPath = "$(HOME)/Library/Bundles";
+			productName = xrandom;
+			productReference = 96CA4E610907E8CC00C234AA /* HTTPlib.u_xcomp */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		089C1669FE841209C02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
+			buildConfigurationList = 96CF455E08FBABD1003AA3FE /* Build configuration list for PBXProject "HTTPlib" */;
+			compatibilityVersion = "Xcode 2.4";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				English,
+				Japanese,
+				French,
+				German,
+				english,
+			);
+			mainGroup = 089C166AFE841209C02AAC07 /* xrandom */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				96CA4E530907E8CC00C234AA /* UnicodeCore */,
+				96D355F20908DD62006B6436 /* ReleaseBuild */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		96CA4E540907E8CC00C234AA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				96CA4E550907E8CC00C234AA /* InfoPlist.strings in Resources */,
+				0F0203CC17D8AFA600C9B6A3 /* HTTPlib.rc in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B09B3D25145018C600B2C5D6 /* Run Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run Script";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "install_name_tool -change /usr/local/pgsql/lib/libpq.5.dylib @loader_path/../../../../libpq.dylib $INSTALL_DIR$EXECUTABLE_PATH";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		96CA4E570907E8CC00C234AA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B02360CC11765D30001236FE /* NVObjBase.cpp in Sources */,
+				B02360CD11765D30001236FE /* HTTPlib.cpp in Sources */,
+				B0A46050125F550F003A3050 /* OmnisTools.cpp in Sources */,
+				B03C1D50130EDBCB00661BC0 /* Static.cpp in Sources */,
+				B0A0716214420B0200337E35 /* ThreadTimer.cpp in Sources */,
+				B01BE7011451716500D8DB73 /* NVObjHTTPWorker.cpp in Sources */,
+				B0C4C3F61460000E003D0911 /* Worker.cpp in Sources */,
+				B0E3AFF3147AC6FD00FC75DF /* Constants.cpp in Sources */,
+				0F85659F17F093E700EC9D79 /* CppNetlibDelegate.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9658838409BC64BB0063770F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 96CA4E530907E8CC00C234AA /* UnicodeCore */;
+			targetProxy = 9658838309BC64BB0063770F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		089C167DFE841241C02AAC07 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				089C167EFE841241C02AAC07 /* English */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		96CA4E5E0907E8CC00C234AA /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = i386;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Boost/boost_1_49_0/stage/lib,
+				);
+			};
+			name = Development;
+		};
+		96CA4E5F0907E8CC00C234AA /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = (
+					ppc,
+					i386,
+				);
+				GCC_ENABLE_FIX_AND_CONTINUE = NO;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					/Boost/boost_1_49_0/stage/lib,
+				);
+				SKIP_INSTALL = NO;
+			};
+			name = Deployment;
+		};
+		96CF455F08FBABD1003AA3FE /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				COPY_PHASE_STRIP = NO;
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(OMNIS_XCOMP_PATH)";
+				FRAMEWORK_SEARCH_PATHS = "$(OMNIS_LIB_PATH)/complib";
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers/carbnuni.h";
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					$PROJECT_DIR/../../include,
+					/Developer/Headers/FlatCarbon,
+					"$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers",
+					"$(BOOST_ROOT)",
+				);
+				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
+				INSTALL_PATH = /;
+				LIBRARY_SEARCH_PATHS = "$(BOOST_ROOT)/stage/lib";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = (
+					"-Dismach_o",
+					"-Dismach-o",
+					"-D_DEBUG",
+				);
+				PRODUCT_NAME = HTTPlib;
+				REZ_SEARCH_PATHS = (
+					$PROJECT_DIR/../../resource,
+					/Developer/Headers/FlatCarbon,
+					$PROJECT_DIR/English.lproj,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				VALID_ARCHS = "ppc i386";
+				WRAPPER_EXTENSION = u_xcomp;
+			};
+			name = Development;
+		};
+		96CF456008FBABD1003AA3FE /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1)";
+				ARCHS_STANDARD_32_BIT_PRE_XCODE_3_1 = "ppc i386";
+				DEPLOYMENT_LOCATION = YES;
+				DSTROOT = "$(PROJECT_DIR)/../../deploy/Mac";
+				FRAMEWORK_SEARCH_PATHS = "$(OMNIS_LIB_PATH)/complib";
+				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers/carbnuni.h";
+				GCC_VERSION = 4.2;
+				GCC_WARN_ABOUT_DEPRECATED_FUNCTIONS = NO;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_PKGINFO_FILE = YES;
+				HEADER_SEARCH_PATHS = (
+					$PROJECT_DIR/../../include,
+					/Developer/Headers/FlatCarbon,
+					"$(OMNIS_LIB_PATH)/complib/u_complib.framework/Headers",
+					"$(BOOST_ROOT)",
+				);
+				INFOPLIST_FILE = $PROJECT_DIR/Info.plist;
+				INSTALL_PATH = /;
+				LIBRARY_SEARCH_PATHS = "$(BOOST_ROOT)/stage/lib";
+				MACOSX_DEPLOYMENT_TARGET = 10.4;
+				OTHER_CFLAGS = (
+					"-Dismach_o",
+					"-Dismach-o",
+				);
+				PRODUCT_NAME = HTTPlib;
+				REZ_SEARCH_PATHS = (
+					$PROJECT_DIR/../../resource,
+					/Developer/Headers/FlatCarbon,
+					$PROJECT_DIR/English.lproj,
+				);
+				SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;
+				VALID_ARCHS = "ppc i386";
+				WRAPPER_EXTENSION = u_xcomp;
+			};
+			name = Deployment;
+		};
+		96D355F40908DD80006B6436 /* Development */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = HTTPlib;
+			};
+			name = Development;
+		};
+		96D355F50908DD80006B6436 /* Deployment */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				PRODUCT_NAME = HTTPlib;
+			};
+			name = Deployment;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		96CA4E5D0907E8CC00C234AA /* Build configuration list for PBXNativeTarget "UnicodeCore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96CA4E5E0907E8CC00C234AA /* Development */,
+				96CA4E5F0907E8CC00C234AA /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		96CF455E08FBABD1003AA3FE /* Build configuration list for PBXProject "HTTPlib" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96CF455F08FBABD1003AA3FE /* Development */,
+				96CF456008FBABD1003AA3FE /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+		96D355F30908DD80006B6436 /* Build configuration list for PBXAggregateTarget "ReleaseBuild" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				96D355F40908DD80006B6436 /* Development */,
+				96D355F50908DD80006B6436 /* Deployment */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Development;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 089C1669FE841209C02AAC07 /* Project object */;
+}

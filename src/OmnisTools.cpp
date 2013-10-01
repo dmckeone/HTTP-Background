@@ -36,9 +36,13 @@
  */
 
 #include "OmnisTools.he"
+#include "Logging.he"
+
 #include <sstream>
 #include <iostream>
+#include <iterator>
 #include <map>
+#include <vector>
 
 #ifdef USE_BOOST
 #include <boost/lexical_cast.hpp>
@@ -400,6 +404,24 @@ str255 OmnisTools::initStr255(const char* in) {
     return theString;
 } 
 
+// Return a C++ std::vector of unsigned char from an EXTfldval
+std::vector<unsigned char> OmnisTools::getBinaryVectorFromEXTFldVal(EXTfldval& fVal) {
+    std::vector<unsigned char> v;
+    qlong realLength, bufferSize;
+    
+    bufferSize = fVal.getBinLen();
+    v.resize(bufferSize);
+
+    fVal.getBinary(v.size(), &v[0], realLength);
+
+    return v;
+}
+
+// Get an EXTfldval for a C++ Binary (vector of unsigned char)
+void OmnisTools::getEXTFldValFromBinaryVector(EXTfldval& fVal, std::vector<unsigned char>& v) {
+    fVal.setBinary(fftBinary, &v[0], v.size());
+}
+
 // Return a C++ bool from an EXTfldval
 bool OmnisTools::getBoolFromEXTFldVal(EXTfldval& fVal) {
 	qshort omnBool;
@@ -677,6 +699,83 @@ std::string OmnisTools::getISO8601DateStringFromEXTFldVal(EXTfldval& fVal) {
 	
 	return retString;
 }
+
+#ifdef USE_BOOST
+boost::any OmnisTools::getAnyFromEXTFldVal(EXTfldval& val) {
+    // Get column definition type
+    ffttype fft;
+    qshort fdp;
+    val.getType( fft, &fdp );
+    
+    str255 colName;
+    EXTqlist *listVal;
+    EXTfldval colVal, colTitleVal;
+    std::vector<ParamMap> listVector;
+    boost::any ret;
+    
+    // Assign map based on definition
+    switch (fft) {
+        case fftCharacter:
+            ret = getStringFromEXTFldVal(val);
+            break;
+        case fftInteger:
+            ret = getIntFromEXTFldVal(val);
+            break;
+        case fftNumber:
+            ret = getDoubleFromEXTFldVal(val);
+            break;
+        case fftBoolean:
+            ret = getBoolFromEXTFldVal(val);
+            break;
+        case fftBinary:
+            ret = getBinaryVectorFromEXTFldVal(val);
+            break;
+        case fftRow:
+        case fftList:
+            listVal = val.getList(qfalse);
+            listVector.clear();
+            for( qlong curRow = 1; curRow < listVal->rowCnt(); ++curRow ) {
+                ParamMap row;
+                for( qlong curCol = 1; curCol < listVal->colCnt(); ++curCol ) {
+                    listVal->getCol(curCol, qfalse, colName);
+                    colTitleVal.setChar(colName);
+                    listVal->getColValRef(curRow, curCol, colVal, qfalse);
+                    row[getStringFromEXTFldVal(colTitleVal)] = getAnyFromEXTFldVal(colVal);
+                }
+                listVector.push_back(row);
+            }
+            ret = listVector;
+            break;
+        default:
+            LOG_DEBUG << "Unknown column type when converting parameters.";
+            break;
+    }
+    
+    return ret;
+}
+
+bool OmnisTools::getParamsFromRow(tThreadData* pThreadData, EXTfldval& row, ParamMap& params) {
+    
+    if(getType(row).valType != fftRow && getType(row).valType != fftList) {
+        return false;
+    }
+    
+    // Convert row into more appropriate variables for parameters
+    str255 colName;
+    EXTfldval colVal, colTitleVal;
+    EXTqlist rowData;
+    row.getList(&rowData, qfalse);
+    for( qshort col = 1; col <= rowData.colCnt(); ++col) {
+        rowData.getCol(col, qfalse, colName);
+        colTitleVal.setChar(colName);
+        rowData.getColValRef(1, col, colVal, qfalse);
+        
+        params[getStringFromEXTFldVal(colTitleVal)] = getAnyFromEXTFldVal(colVal);
+    }    
+    
+    return true;
+}
+#endif
 
 qbool OmnisTools::ensurePosixPath(EXTfldval& pathVal) {
 #ifdef ismac

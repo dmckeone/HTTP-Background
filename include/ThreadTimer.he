@@ -8,8 +8,9 @@
 //  This class wraps a single Omnis timer with a singleton for easy 
 //  access and control
 
-#include <extcomp.he>
 #include "NVObjBase.he"
+#include <extcomp.he>
+
 
 #ifndef THREAD_TIMER_HE_
 #define THREAD_TIMER_HE_

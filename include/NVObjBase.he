@@ -31,8 +31,10 @@
  * March 30, 2010 David McKeone (Created)
  */
 
+#include <boost/asio.hpp>
+
 #include <extcomp.he>
-#include "PostgreSQLBackground.he"
+#include "HTTPlib.he"
 #include "OmnisTools.he"
 
 #ifndef NV_OBJ_BASE_HE_

@@ -31,8 +31,8 @@
  * March 30, 2010 David McKeone (Created)
  */
 
-#include <extcomp.he>
 #include "NVObjBase.he"
+#include <extcomp.he>
 #include "ThreadTimer.he"
 
 using namespace OmnisTools;
